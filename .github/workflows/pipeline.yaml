@@ -24,8 +24,8 @@ jobs:
       # Lint: Tipico que se ejecute en continius integrations: travis, guthub actions, gitlab ci/cd,etc
       #       Porque es lo que te asegura que lo que estas integrando en la rama que sea es correcto, asi
       #       podemos evitar que se integre si no esta bien
-      - name: Lint
-        run: npm run test
+      - name: Deploy App
+        run: npm run start
 
 
 # Link utils:
