@@ -1,0 +1,21 @@
+# 1. Indicar el Nombre del workflow
+name: Say Prueba Inicial
+
+# 2. Indicar el Evento (cuando se tiene que activar este archivo)
+on:
+  # Cada vez que hagamos un push en la rama main se va activar el workflow
+  push:
+    branches:
+      - main
+
+# 3. Indicar el Trabajo que tiene que hacerse
+jobs:
+  # Nombre del trabajo q se va a ejecutar
+  prueba_inicial:
+    # Indicamos en que sistema operativo se va a ejecutar
+    runs-on: ubuntu-latest
+    # Hay que indicarle todos los pasos que tiene que dar
+    steps:
+      # A los pasos le podemos dar un nombre
+      - name: Echo del mensaje
+        run: echo "Esta es una prueba inicial de usando Github Actions"
