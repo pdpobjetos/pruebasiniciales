@@ -14,9 +14,12 @@ jobs:
   prueba_inicial:
     # Indicamos en que sistema operativo se va a ejecutar
     runs-on: ubuntu-latest
-    # Hay que indicarle todos los pasos que tiene que dar
+    # Hay que indicarle todos los pasos que tiene que dar (Es un array)
     steps:
       # A los pasos le podemos dar un nombre
       - name: Echo del mensaje
         run: echo "Esta es una prueba inicial de usando Github Actions"
-        
+      - name: Dime la Fecha
+        run: date
+      - name: Dime las carpetas en este directorio
+        run: ls -la
