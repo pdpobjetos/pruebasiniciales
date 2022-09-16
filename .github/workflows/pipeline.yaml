@@ -1,0 +1,32 @@
+# Pipeline: Es una tuberia en la que pasan todos los procesos en las que fluyen en nuestra aplicacion
+#           Lo usamos para hacer el despliegue de nuestra app en PRODUCCION
+name: Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      # Usamos esta Accion que solo se trae el ultimo commit para hacer el git checkout mucho mas rapido
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # Como queremos instalarnos las dependencias y linkear el codigo => Necesitamos Node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Instalamos las dependencias
+        run : npm install
+      # Lint: Tipico que se ejecute en continius integrations: travis, guthub actions, gitlab ci/cd,etc
+      #       Porque es lo que te asegura que lo que estas integrando en la rama que sea es correcto, asi
+      #       podemos evitar que se integre si no esta bien
+      - name: Lint
+        run: npm run test
+
+
+# Link utils:
+# 1) Checkout:  https://github.com/marketplace/actions/checkout
